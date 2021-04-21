@@ -34,6 +34,6 @@ function extracPorts(){
         echo -e "\t${blueColour}[*]IP ADDRESS: ${endColour}${grayColour}$ip_adress${endColour}"
         echo -e "\t${blueColour}[*]OPEN PORTS: ${endColour}${grayColour}$open_ports${endColour}\n"
         echo -e "\n${yellowColour}[*] Listo Para el Hacking [*]${endColour}\n"
-        echo $open_ports | tr -d '\n' | xclip -sel clip
+        echo $(echo $open_ports | tr -d '\n') $ip_adress "-oN nmap"| xclip -sel clip
         echo -e "\n${yellowColour}[*] Los Puertos han sido copiados to clipboard .......${endColour}\n"
 }
