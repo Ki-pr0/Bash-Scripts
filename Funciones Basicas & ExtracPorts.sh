@@ -10,12 +10,17 @@ purpleColour="\e[0;35m\033[1m"
 turquoiseColour="\e[0;36m\033[1m"
 grayColour="\e[0;37m\033[1m"
 
-#Creacion de una funcion que crea directorio [$1] y movimiento al directorio nuevo
+# Funcion que filtra por la conexion vpn activa y elimina el proceso
+function killOpenvpn(){
+        kill $(netstat -antp | grep openvpn | grep -oP '\d{1,6}/openvpn' | grep -E '.*?\/' | tr "/" " " | awk '{print $1}')
+}
+
+# Creacion de una funcion que crea directorio [$1] y movimiento al directorio nuevo
 function mki(){
                 mkdir $1
                 cd $1
 
-#Creacion de una funcion que nos crea 5 directorios para trabajar organizados
+# Creacion de una funcion que nos crea 5 directorios para trabajar organizados
 }
 
 function mkc(){
@@ -24,6 +29,7 @@ function mkc(){
 }
 
 # Funcion que nos extrae los resultados de una captura de nmap en formato -oG Grepeable y con la utilidad xclip nos copia los Puertos ~ Abiertos en la clipboard
+# Mas actualizacion para que cuando peguemos los puertos se introduzca la IP y el tipo de archivo output en -oN y se guarde en Target
 function extracPorts(){
 
         echo -e "\n${yellowColour}[*] Extracting information .......${endColour}\n"
