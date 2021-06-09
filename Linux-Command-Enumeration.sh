@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Comando para enumerar desde la ruta /var/ en busca de credenciales para escalar Privilegios
+# Comando para enumerar desde la ruta /var/ en busca de credenciales para escalar Privilegios desde nuestra ruta actual
 
 $ find . -iname '*config*' -type f -exec grep -nie 'pass.*=' --color=always /dev/null {} \;
 
