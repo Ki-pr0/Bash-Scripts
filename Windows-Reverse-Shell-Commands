@@ -1,4 +1,4 @@
-# Paso 1 Buscamos el binario de nc.exe y nos lo compiamos a nuestra carpeta actual para postearlo
+# Paso 1 Buscamos el binario de nc.exe y nos lo copiamos a nuestra carpeta actual para postearlo con un servidor
 $ locate nc.exe 
 
 # Paso 2 Montarse un servidor SmbFolder con la herramienta impacket
