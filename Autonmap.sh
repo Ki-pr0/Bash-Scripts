@@ -43,7 +43,7 @@ if [ $1 != null ]; then
         nmap -sC -sV -p$(echo $(echo $open_ports | tr -d '\n') $ip_adress -oN target)
         echo -e "\n${blueColour}[*]${endColour}${purpleColour} Guardando los Resultados en el archivo:${endColour}${greenColour} target${endColour}"
         sleep 15
-        echo -ne "\n${redColour}[*]${endColour}${greenColour} Procedemos con el script${endColour}${yellowColour} http-enum?? yes/si no/enter ${endColour}\n" && read answer
+        echo -ne "\n${redColour}[*]${endColour}${greenColour} Procedemos con el script${endColour}${yellowColour} http-enum?? si/no ${endColour}\n" && read answer
         if [ $answer == "si" ]; then
                 echo -ne "\n${redColour}[*]${endColour}${greenColour} Especifica el ${endColour}${yellowColour} Puerto http ${endColour}\n" && read port
                 nmap --script http-enum -p$port $ip -oN WebScan &>/dev/null
