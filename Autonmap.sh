@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Autor Surf3rH4ck
+# Autor Surf3rH4ck ~ Especial Gracias a S4vitar 
 
 #Colours
 greenColour="\e[0;32m\033[1m"
