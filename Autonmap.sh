@@ -19,6 +19,7 @@ function helpPannel(){
 }
 # Cogiendo el Ctrl + C para poder parar la ejecucion del programa
 trap ctrl_c INT
+
 function ctrl_c(){
         echo -e "\n${yellowColour}[*]${endColour}${greyColour}Saliendo [*]${endColour}"
         exit 0
