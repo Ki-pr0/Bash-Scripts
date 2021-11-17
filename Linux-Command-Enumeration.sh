@@ -7,12 +7,16 @@ $ find . -iname '*config*' -type f -exec grep -nie 'pass.*=' --color=always /dev
 # Buscando por permisos SUID a nivel de root para escalar privilegios
 
 $ find / -perm -u=s -type f 2>/dev/null
+$ find / -perm -4000 2>/dev/null
 
 # Busqueda de archivos interesantes con el nombre +config+
 
 $ find \-name config* -type f 2>/dev/null
- 
 $ find \-name *config* -type f 2>/dev/null
+
+# Busqueda de archivos interesantes por grupos
+
+$ find / -group manage -type -f 2>/dev/null
 
 # Grepeando desde la ruta /var/www/ para encontrar ficheros de manera recursiva que contengan el multiple matching de estas palabras
 
@@ -22,3 +26,7 @@ $ find \-name *config* -type f 2>/dev/null
 
 $ grep -r -i -E "user|pass"
 $ grep -r -i -E "auth|key|db|database"
+
+# Busqueda de tareas CRON 
+
+$ systemctl list-timers
