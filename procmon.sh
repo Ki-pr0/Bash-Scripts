@@ -2,7 +2,7 @@
 
 #creamos una variable para que almacene todos los procesos
 
-old_process=$(ps -eo commands)
+old_process=$(ps -eo command)
 
 #creamos un bucle de itineracion infinita para que contantamente se cree una 
 #nueva variable llamada new_process que va a tener una diferencia de tiempo en comandos con la otra variable
